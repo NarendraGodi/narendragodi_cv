@@ -15,24 +15,22 @@ function loadTheme() {
     }
 }
 
-// Experience Card Toggle Functionality
-function setupExperienceToggles() {
-    const companyCards = document.querySelectorAll('.company-card');
+// Tab Switching Functionality
+function setupTabs() {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanes = document.querySelectorAll('.tab-pane');
     
-    companyCards.forEach(card => {
-        const header = card.querySelector('.company-header');
-        const toggleBtn = card.querySelector('.toggle-btn');
-        
-        header.addEventListener('click', () => {
-            // Close all other cards
-            companyCards.forEach(otherCard => {
-                if (otherCard !== card) {
-                    otherCard.classList.remove('active');
-                }
-            });
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetTab = button.getAttribute('data-tab');
             
-            // Toggle current card
-            card.classList.toggle('active');
+            // Remove active class from all buttons and panes
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabPanes.forEach(pane => pane.classList.remove('active'));
+            
+            // Add active class to clicked button and corresponding pane
+            button.classList.add('active');
+            document.getElementById(targetTab).classList.add('active');
         });
     });
 }
@@ -71,36 +69,33 @@ function setupSkillAnimations() {
     });
 }
 
-// Company Card Keyboard Navigation
+// Keyboard Navigation for Tabs
 function setupKeyboardNavigation() {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            // Close all open company cards on ESC
-            document.querySelectorAll('.company-card.active').forEach(card => {
-                card.classList.remove('active');
-            });
+        const activeTab = document.querySelector('.tab-btn.active');
+        const currentIndex = Array.from(tabButtons).indexOf(activeTab);
+        
+        if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            const nextIndex = (currentIndex + 1) % tabButtons.length;
+            tabButtons[nextIndex].click();
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            const prevIndex = (currentIndex - 1 + tabButtons.length) % tabButtons.length;
+            tabButtons[prevIndex].click();
         }
     });
-}
-
-// Auto-expand first company card on load
-function autoExpandFirstCard() {
-    const firstCard = document.querySelector('.company-card');
-    if (firstCard) {
-        setTimeout(() => {
-            firstCard.classList.add('active');
-        }, 500);
-    }
 }
 
 // Initialize all functionality when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     loadTheme();
-    setupExperienceToggles();
+    setupTabs();
     setupScrollAnimations();
     setupSkillAnimations();
     setupKeyboardNavigation();
-    autoExpandFirstCard();
 });
 
 // Add event listener to theme toggle button
@@ -120,11 +115,23 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Print functionality - expand all cards before printing
+// Print functionality - show all tabs when printing
 window.addEventListener('beforeprint', () => {
-    document.querySelectorAll('.company-card').forEach(card => {
-        card.classList.add('active');
+    document.querySelectorAll('.tab-pane').forEach(pane => {
+        pane.classList.add('active');
     });
+});
+
+window.addEventListener('afterprint', () => {
+    // Reset to only show active tab
+    const activeTabButton = document.querySelector('.tab-btn.active');
+    const targetTab = activeTabButton.getAttribute('data-tab');
+    
+    document.querySelectorAll('.tab-pane').forEach(pane => {
+        pane.classList.remove('active');
+    });
+    
+    document.getElementById(targetTab).classList.add('active');
 });
 
 // Optional: Add animation to achievements on scroll
