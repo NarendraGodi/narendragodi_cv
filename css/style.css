@@ -774,6 +774,17 @@ h5 {
     }
 
     body {
-        background: white;
+        background: white !important;
+        color: black !important;
+    }
+    
+    /* Make text readable when printed */
+    h1, h2, h3, h4, h5, .job-title, .company-name, .subtitle {
+        color: #000 !important;
+        text-shadow: none !important;
+    }
+    
+    .text-primary, .text-secondary, p, li {
+        color: #333 !important;
     }
 }
