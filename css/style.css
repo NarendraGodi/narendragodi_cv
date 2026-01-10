@@ -94,14 +94,20 @@ h1 {
 .contact-item {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     color: var(--text-secondary);
     text-decoration: none;
     transition: color 0.3s ease;
+    font-size: 0.95em;
 }
 
 .contact-item:hover {
     color: var(--accent);
+}
+
+/* Make emojis smaller */
+.contact-item::first-letter {
+    font-size: 0.9em;
 }
 
 /* Theme Toggle */
@@ -415,7 +421,7 @@ h5 {
 
 .project-content h4::before {
     content: '🚀';
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 .project-content > p {
