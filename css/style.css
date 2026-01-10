@@ -233,126 +233,247 @@ h5 {
     line-height: 1.6;
 }
 
-/* Experience Section */
-.experience-timeline {
+/* Experience Section - Horizontal Tabs */
+.experience-tabs-container {
+    margin-top: 30px;
+}
+
+.tabs-nav {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    gap: 10px;
+    margin-bottom: 0;
+    overflow-x: auto;
+    padding-bottom: 5px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) var(--bg-secondary);
 }
 
-.company-card {
+.tabs-nav::-webkit-scrollbar {
+    height: 6px;
+}
+
+.tabs-nav::-webkit-scrollbar-track {
     background: var(--bg-secondary);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    border: 2px solid var(--border);
+    border-radius: 10px;
 }
 
-.company-card:hover {
+.tabs-nav::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+.tab-btn {
+    flex: 1;
+    min-width: 180px;
+    padding: 20px;
+    background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
+    border: 2px solid var(--border);
+    border-bottom: none;
+    border-radius: 12px 12px 0 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+}
+
+.tab-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #3498db, #2ecc71, #e74c3c, #f39c12);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.tab-btn:hover::before {
+    transform: scaleX(1);
+}
+
+.tab-btn:hover {
+    transform: translateY(-3px);
     box-shadow: 0 5px 20px var(--shadow);
     border-color: var(--accent);
 }
 
-.company-header {
-    padding: 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    background: var(--bg-primary);
-    transition: background 0.3s ease;
+.tab-btn.active {
+    background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+    border-color: var(--accent);
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
 }
 
-.company-header:hover {
-    background: var(--bg-secondary);
+.tab-btn.active::before {
+    transform: scaleX(1);
+    background: linear-gradient(90deg, #fff, #f0f0f0);
 }
 
-.job-title {
-    font-size: 1.3em;
-    color: var(--text-primary);
+.tab-company {
+    display: block;
+    font-size: 1.1em;
     font-weight: 600;
     margin-bottom: 5px;
 }
 
-.company {
-    color: var(--accent);
-    font-size: 1.1em;
-    margin: 5px 0;
+.tab-btn.active .tab-company,
+.tab-btn.active .tab-duration {
+    color: white;
 }
 
-.duration {
+.tab-duration {
+    display: block;
+    font-size: 0.85em;
     color: var(--text-secondary);
     font-style: italic;
-    margin-top: 5px;
+}
+
+.tabs-content {
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    border: 2px solid var(--border);
+    border-radius: 0 0 12px 12px;
+    padding: 35px;
+    min-height: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+.tabs-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #3498db, #2ecc71, #e74c3c, #f39c12);
+}
+
+.tab-pane {
+    display: none;
+    animation: fadeInUp 0.5s ease;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.job-header {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--border);
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.05), rgba(46, 204, 113, 0.05));
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.job-title {
+    font-size: 1.5em;
+    color: var(--text-primary);
+    font-weight: 700;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.company-name {
+    color: var(--accent);
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.job-duration {
+    color: var(--text-secondary);
+    font-style: italic;
     font-size: 0.95em;
 }
 
-.toggle-btn {
-    background: var(--accent);
-    color: white;
-    border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1.2em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-}
-
-.toggle-btn:hover {
-    background: var(--accent-hover);
-    transform: scale(1.1);
-}
-
-.company-card.active .toggle-btn {
-    transform: rotate(180deg);
-}
-
-.company-details {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease, padding 0.5s ease;
-    background: var(--bg-primary);
-}
-
-.company-card.active .company-details {
-    max-height: 2000px;
-    padding: 25px;
-    border-top: 2px solid var(--border);
-}
-
-.project-info h4 {
+.project-content h4 {
     color: var(--accent);
     margin-bottom: 15px;
     font-size: 1.3em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.project-info > p {
+.project-content h4::before {
+    content: '🚀';
+    font-size: 1.2em;
+}
+
+.project-content > p {
     color: var(--text-secondary);
     line-height: 1.8;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: var(--bg-secondary);
+    border-left: 4px solid var(--accent);
+    border-radius: 4px;
 }
 
-.project-info ul {
+.project-content ul {
     margin-left: 20px;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
-.project-info li {
-    margin-bottom: 10px;
+.project-content li {
+    margin-bottom: 12px;
     color: var(--text-secondary);
-    line-height: 1.6;
+    line-height: 1.7;
+    position: relative;
+    padding-left: 10px;
+}
+
+.project-content li::before {
+    content: '▹';
+    position: absolute;
+    left: -15px;
+    color: var(--accent);
+    font-weight: bold;
 }
 
 .sub-project {
     margin-top: 25px;
-    padding: 20px;
-    background: var(--bg-secondary);
-    border-radius: 8px;
-    border-left: 4px solid var(--accent);
+    padding: 25px;
+    background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
+    border-radius: 12px;
+    border: 2px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.sub-project::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, #3498db, #2ecc71);
+}
+
+.sub-project:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 20px var(--shadow);
+    border-color: var(--accent);
 }
 
 .sub-project:first-of-type {
@@ -361,11 +482,14 @@ h5 {
 
 .sub-project h5 {
     margin-top: 0;
+    color: var(--accent);
+    font-size: 1.15em;
 }
 
 .sub-project p {
     color: var(--text-secondary);
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    line-height: 1.7;
 }
 
 .sub-project ul {
@@ -374,7 +498,8 @@ h5 {
 
 .sub-project li {
     color: var(--text-secondary);
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    line-height: 1.6;
 }
 
 /* Certifications Section */
@@ -450,18 +575,27 @@ h5 {
         padding: 10px 15px;
     }
 
-    .company-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-    }
-
-    .toggle-btn {
-        align-self: flex-end;
-    }
-
     .certification-grid {
         grid-template-columns: 1fr;
+    }
+
+    .tabs-nav {
+        flex-direction: column;
+    }
+
+    .tab-btn {
+        min-width: 100%;
+        border-radius: 8px;
+        border: 2px solid var(--border);
+    }
+
+    .tabs-content {
+        border-radius: 8px;
+        padding: 20px;
+    }
+
+    .tab-btn.active {
+        transform: translateY(0);
     }
 }
 
@@ -471,14 +605,17 @@ h5 {
         display: none;
     }
 
-    .toggle-btn {
+    .tab-btn {
         display: none;
     }
 
-    .company-details {
-        max-height: none !important;
-        padding: 25px !important;
-        border-top: 2px solid var(--border) !important;
+    .tab-pane {
+        display: block !important;
+        page-break-inside: avoid;
+    }
+
+    .tabs-content {
+        border: 1px solid #ddd;
     }
 
     .section {
@@ -488,9 +625,5 @@ h5 {
 
     body {
         background: white;
-    }
-
-    .company-card {
-        border: 1px solid #ddd;
     }
 }
