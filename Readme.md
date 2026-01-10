@@ -1,45 +1,51 @@
-# CV Repository
+# CV Website - Project Structure
 
-This repository contains my curriculum vitae (CV) in various formats.
+This repository contains my professional CV as an interactive website.
 
-## Contents
+## 📁 Project Structure
 
-- `cv.pdf` - PDF version of my CV
-- `cv.docx` - Microsoft Word version
-- `cv.tex` - LaTeX source file (if applicable)
-- `assets/` - Supporting files (profile photo, icons, etc.)
-
-## Versions
-
-**Current Version:** 1.0  
-**Last Updated:** January 2026
-
-## Formats Available
-
-- **PDF** - Primary format for sharing and printing
-- **Word** - Editable format for ATS (Applicant Tracking Systems)
-- **LaTeX** - Source format for professional typesetting
-
-## Building from Source
-
-If you're using the LaTeX version:
-
-```bash
-pdflatex cv.tex
+```
+cv-website/
+├── index.html          # Main HTML structure
+├── css/
+│   └── style.css       # All styling
+├── js/
+│   └── script.js       # Interactive functionality
+└── README.md           # This file
 ```
 
-## Usage
+## 🚀 GitHub Pages Deployment
 
-Feel free to download the latest version from the repository. The PDF version is recommended for most purposes.
+1. Create a new repository named `<your-username>.github.io`
+2. Upload all files maintaining the folder structure
+3. Go to Settings → Pages
+4. Select main branch as source
+5. Your site will be live at `https://<your-username>.github.io`
 
-## License
+## ✨ Features
 
-This CV is for personal use only. Please do not distribute or reproduce without permission.
+- **Dark/Light Mode** - Toggle between themes
+- **Responsive Design** - Mobile, tablet, and desktop optimized
+- **Interactive Experience** - Click on companies to see detailed project information
+- **Smooth Animations** - Professional transitions and effects
+- **Print-Friendly** - Optimized for PDF generation
 
-## Contact
+## 🛠️ Technologies Used
 
-For any questions or updates, please contact me through the information provided in the CV.
+- HTML5
+- CSS3 (with CSS Variables for theming)
+- Vanilla JavaScript (no dependencies)
 
----
+## 📝 Customization
 
-*This repository is maintained to keep track of CV versions and updates over time.*
+- **Colors**: Edit CSS variables in `style.css`
+- **Content**: Update `index.html`
+- **Interactions**: Modify `script.js`
+
+## 📄 License
+
+Personal use only. Please do not distribute without permission.
+
+## 📧 Contact
+
+Narendra Godi - narendragodi@gmail.com
