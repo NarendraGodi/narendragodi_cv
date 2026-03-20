@@ -6,25 +6,25 @@
 
 :root {
     --bg-primary: #ffffff;
-    --bg-secondary: #f8f9fa;
-    --text-primary: #2c3e50;
-    --text-secondary: #5a6c7d;
-    --accent: #3498db;
-    --accent-hover: #2980b9;
-    --border: #e1e8ed;
-    --shadow: rgba(0, 0, 0, 0.1);
+    --bg-secondary: #f5f7fa;
+    --text-primary: #1a202c;
+    --text-secondary: #4a5568;
+    --accent: #2d5a8c;
+    --accent-hover: #1e3a4c;
+    --border: #e2e8f0;
+    --shadow: rgba(0, 0, 0, 0.08);
     --success: #2ecc71;
     --warning: #f39c12;
 }
 
 body.dark-mode {
-    --bg-primary: #1a1a2e;
-    --bg-secondary: #16213e;
-    --text-primary: #eef2f5;
-    --text-secondary: #b8c5d0;
-    --accent: #4a90e2;
-    --accent-hover: #357abd;
-    --border: #2d3748;
+    --bg-primary: #1f2937;
+    --bg-secondary: #111827;
+    --text-primary: #f3f4f6;
+    --text-secondary: #d1d5db;
+    --accent: #60a5fa;
+    --accent-hover: #3b82f6;
+    --border: #374151;
     --shadow: rgba(0, 0, 0, 0.3);
 }
 
@@ -33,10 +33,6 @@ body {
     line-height: 1.6;
     color: var(--text-primary);
     background: var(--bg-secondary);
-    background-image: 
-        radial-gradient(circle at 20% 50%, rgba(0, 217, 255, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(255, 0, 110, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 40% 20%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
     transition: background 0.3s ease, color 0.3s ease;
 }
 
@@ -51,29 +47,12 @@ header {
     background: var(--bg-primary);
     padding: 60px 20px;
     text-align: center;
-    box-shadow: 0 4px 20px var(--shadow), var(--neon-glow);
+    box-shadow: 0 2px 8px var(--shadow);
     margin-bottom: 30px;
     border-radius: 12px;
     position: relative;
     overflow: hidden;
-    border: 2px solid var(--accent);
-}
-
-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent), var(--accent-pink), var(--accent-purple), var(--accent-hover));
-    box-shadow: 0 0 20px var(--accent);
-    animation: neonPulse 2s ease-in-out infinite;
-}
-
-@keyframes neonPulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
+    border: 1px solid var(--border);
 }
 
 .header-content {
@@ -86,7 +65,6 @@ h1 {
     margin-bottom: 10px;
     color: var(--text-primary);
     font-weight: 700;
-    text-shadow: var(--neon-glow);
 }
 
 .subtitle {
@@ -94,7 +72,6 @@ h1 {
     color: var(--accent);
     margin-bottom: 20px;
     font-weight: 500;
-    text-shadow: var(--neon-glow);
 }
 
 .contact-info {
@@ -129,22 +106,22 @@ h1 {
     position: fixed;
     top: 20px;
     right: 20px;
-    background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+    background: var(--accent);
     color: white;
-    border: 2px solid var(--accent);
-    padding: 12px 18px;
-    border-radius: 25px;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 1em;
-    box-shadow: var(--neon-glow);
+    font-size: 0.95em;
+    box-shadow: 0 2px 8px var(--shadow);
     transition: all 0.3s ease;
     z-index: 1000;
 }
 
 .theme-toggle:hover {
-    background: linear-gradient(135deg, var(--accent-hover), var(--accent-pink));
-    transform: scale(1.05);
-    box-shadow: 0 0 20px var(--accent), 0 0 40px var(--accent);
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow);
 }
 
 /* Section Styles */
@@ -153,21 +130,10 @@ h1 {
     padding: 40px;
     margin-bottom: 30px;
     border-radius: 12px;
-    box-shadow: 0 4px 20px var(--shadow);
+    box-shadow: 0 2px 8px var(--shadow);
     animation: fadeIn 0.6s ease;
-    border: 2px solid var(--border);
+    border: 1px solid var(--border);
     position: relative;
-}
-
-.section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent), transparent);
-    opacity: 0.5;
 }
 
 @keyframes fadeIn {
@@ -185,10 +151,9 @@ h2 {
     font-size: 2em;
     margin-bottom: 25px;
     color: var(--accent);
-    border-bottom: 3px solid var(--accent);
+    border-bottom: 2px solid var(--accent);
     padding-bottom: 10px;
     display: inline-block;
-    text-shadow: var(--neon-glow);
 }
 
 h3 {
@@ -222,7 +187,7 @@ h5 {
 .skill-category {
     margin-bottom: 30px;
     padding: 25px;
-    background: linear-gradient(135deg, rgba(0, 217, 255, 0.05), rgba(139, 92, 246, 0.05));
+    background: var(--bg-secondary);
     border-radius: 12px;
     border: 1px solid var(--border);
     position: relative;
@@ -234,10 +199,9 @@ h5 {
     position: absolute;
     top: 0;
     left: 0;
-    width: 4px;
+    width: 3px;
     height: 100%;
-    background: linear-gradient(180deg, var(--accent), var(--accent-purple));
-    box-shadow: 0 0 10px var(--accent);
+    background: var(--accent);
 }
 
 .skill-category h4 {
@@ -247,14 +211,12 @@ h5 {
     display: flex;
     align-items: center;
     gap: 10px;
-    text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
 }
 
 .skill-category h4::before {
-    content: '◆';
-    color: var(--accent-pink);
+    content: '▸';
+    color: var(--accent);
     font-size: 1.2em;
-    text-shadow: var(--neon-glow-pink);
 }
 
 .skills-grid {
@@ -264,60 +226,41 @@ h5 {
 }
 
 .skill-tag {
-    background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(139, 92, 246, 0.1));
+    background: var(--bg-primary);
     color: var(--accent);
-    padding: 10px 18px;
-    border-radius: 25px;
+    padding: 8px 16px;
+    border-radius: 6px;
     font-size: 0.9em;
-    border: 2px solid var(--accent);
+    border: 1px solid var(--border);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
     font-weight: 500;
 }
 
-.skill-tag::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(0, 217, 255, 0.2);
-    transform: translate(-50%, -50%);
-    transition: width 0.3s ease, height 0.3s ease;
-}
-
 .skill-tag:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 20px var(--accent), 0 0 40px rgba(0, 217, 255, 0.3);
-    background: linear-gradient(135deg, var(--accent), var(--accent-purple));
-    color: #fff;
-    border-color: var(--accent-hover);
-}
-
-.skill-tag:hover::before {
-    width: 300px;
-    height: 300px;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow);
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
 }
 
 /* Achievements Section */
 .achievement {
     margin-bottom: 20px;
     padding: 20px;
-    border-left: 4px solid var(--accent);
-    background: linear-gradient(135deg, rgba(0, 217, 255, 0.03), rgba(139, 92, 246, 0.03));
+    border-left: 3px solid var(--accent);
+    background: var(--bg-secondary);
     border-radius: 8px;
     transition: all 0.3s ease;
     border: 1px solid var(--border);
-    border-left-width: 4px;
+    border-left-width: 3px;
 }
 
 .achievement:hover {
-    transform: translateX(10px);
-    box-shadow: -5px 0 20px rgba(0, 217, 255, 0.3);
-    border-left-color: var(--accent-pink);
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px var(--shadow);
 }
 
 .achievement ul {
@@ -363,53 +306,32 @@ h5 {
 .tab-btn {
     flex: 1;
     min-width: 180px;
-    padding: 20px;
-    background: linear-gradient(135deg, rgba(0, 217, 255, 0.05), rgba(139, 92, 246, 0.05));
-    border: 2px solid var(--border);
+    padding: 16px 20px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
     border-bottom: none;
-    border-radius: 12px 12px 0 0;
+    border-radius: 8px 8px 0 0;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
     text-align: left;
-}
-
-.tab-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent), var(--accent-purple), var(--accent-pink));
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
-    box-shadow: 0 0 10px var(--accent);
-}
-
-.tab-btn:hover::before {
-    transform: scaleX(1);
+    color: var(--text-primary);
 }
 
 .tab-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 20px rgba(0, 217, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow);
     border-color: var(--accent);
-    background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(139, 92, 246, 0.1));
+    background: var(--bg-primary);
 }
 
 .tab-btn.active {
-    background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+    background: var(--accent);
     border-color: var(--accent);
     color: white;
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 217, 255, 0.5), var(--neon-glow);
-}
-
-.tab-btn.active::before {
-    transform: scaleX(1);
-    background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0.5));
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow);
 }
 
 .tab-company {
@@ -432,24 +354,13 @@ h5 {
 }
 
 .tabs-content {
-    background: linear-gradient(135deg, rgba(0, 217, 255, 0.02), rgba(139, 92, 246, 0.02));
-    border: 2px solid var(--border);
-    border-radius: 0 0 12px 12px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: 0 0 8px 8px;
     padding: 35px;
     min-height: 400px;
     position: relative;
     overflow: hidden;
-}
-
-.tabs-content::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent), var(--accent-purple), var(--accent-pink));
-    box-shadow: 0 0 15px var(--accent);
 }
 
 .tab-pane {
@@ -474,10 +385,8 @@ h5 {
 
 .job-header {
     margin-bottom: 25px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid var(--border);
-    background: linear-gradient(135deg, rgba(0, 217, 255, 0.05), rgba(139, 92, 246, 0.05));
     padding: 20px;
+    background: var(--bg-secondary);
     border-radius: 8px;
     border: 1px solid var(--border);
 }
@@ -487,15 +396,13 @@ h5 {
     color: var(--accent);
     font-weight: 700;
     margin-bottom: 8px;
-    text-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
 }
 
 .company-name {
-    color: var(--accent-pink);
+    color: var(--accent);
     font-size: 1.2em;
     font-weight: 600;
     margin-bottom: 5px;
-    text-shadow: 0 0 10px rgba(255, 0, 110, 0.3);
 }
 
 .job-duration {
@@ -511,7 +418,6 @@ h5 {
     display: flex;
     align-items: center;
     gap: 10px;
-    text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
 }
 
 /* Company icons */
@@ -579,9 +485,9 @@ h5 {
 .sub-project {
     margin-top: 25px;
     padding: 25px;
-    background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
-    border-radius: 12px;
-    border: 2px solid var(--border);
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    border: 1px solid var(--border);
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
@@ -593,14 +499,13 @@ h5 {
     left: 0;
     top: 0;
     bottom: 0;
-    width: 4px;
-    background: linear-gradient(180deg, #3498db, #2ecc71);
+    width: 3px;
+    background: var(--accent);
 }
 
 .sub-project:hover {
-    transform: translateX(5px);
-    box-shadow: 0 5px 20px var(--shadow);
-    border-color: var(--accent);
+    transform: translateX(3px);
+    box-shadow: 0 4px 12px var(--shadow);
 }
 
 .sub-project:first-of-type {
@@ -637,36 +542,20 @@ h5 {
 }
 
 .cert-card {
-    background: linear-gradient(135deg, rgba(0, 217, 255, 0.05), rgba(139, 92, 246, 0.05));
+    background: var(--bg-secondary);
     padding: 25px;
-    border-radius: 12px;
+    border-radius: 8px;
     text-align: center;
     transition: all 0.3s ease;
-    border: 2px solid var(--border);
+    border: 1px solid var(--border);
     position: relative;
     overflow: hidden;
 }
 
-.cert-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(139, 92, 246, 0.1));
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
 .cert-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 8px 30px rgba(0, 217, 255, 0.4), var(--neon-glow);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px var(--shadow);
     border-color: var(--accent);
-}
-
-.cert-card:hover::before {
-    opacity: 1;
 }
 
 .cert-card h4 {
@@ -674,7 +563,6 @@ h5 {
     margin-bottom: 10px;
     position: relative;
     z-index: 1;
-    text-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
 }
 
 .cert-card p {

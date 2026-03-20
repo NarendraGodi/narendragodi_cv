@@ -2,17 +2,31 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM loaded - initializing...');
     
-    // Force dark mode (neon theme) always
-    document.body.classList.add('dark-mode');
+    // Check for saved theme preference, default to light mode
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+    }
     
-    // Theme Toggle Functionality - now just toggles between neon variations
+    // Theme Toggle Functionality
     const themeToggle = document.getElementById('themeToggle');
     
     if (themeToggle) {
         themeToggle.addEventListener('click', function() {
-            // Toggle between two neon color schemes
-            document.body.classList.toggle('neon-alt');
+            // Toggle between light and dark mode
+            document.body.classList.toggle('dark-mode');
+            
+            // Save preference
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+            
+            // Update button text
+            themeToggle.textContent = isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode';
         });
+        
+        // Set initial button text
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        themeToggle.textContent = isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode';
     }
     
     // Tab Switching Functionality
