@@ -2,33 +2,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM loaded - initializing...');
     
-    // Check for saved theme preference, default to light mode
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-    }
-    
-    // Theme Toggle Functionality
-    const themeToggle = document.getElementById('themeToggle');
-    
-    if (themeToggle) {
-        themeToggle.addEventListener('click', function() {
-            // Toggle between light and dark mode
-            document.body.classList.toggle('dark-mode');
-            
-            // Save preference
-            const isDarkMode = document.body.classList.contains('dark-mode');
-            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-            
-            // Update button text
-            themeToggle.textContent = isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode';
-        });
-        
-        // Set initial button text
-        const isDarkMode = document.body.classList.contains('dark-mode');
-        themeToggle.textContent = isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode';
-    }
-    
     // Tab Switching Functionality
     const tabButtons = document.querySelectorAll('.tab-btn');
     const tabPanes = document.querySelectorAll('.tab-pane');
@@ -170,4 +143,29 @@ window.addEventListener('afterprint', function() {
             }
         });
     }
+    
+    // Navigation link highlighting
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('.section');
+    
+    window.addEventListener('scroll', function() {
+        let current = '';
+        
+        sections.forEach(function(section) {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (scrollY >= sectionTop - 200) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinks.forEach(function(link) {
+            link.classList.remove('active');
+            if (link.getAttribute('href').slice(1) === current) {
+                link.classList.add('active');
+            }
+        });
+    });
+    
+    console.log('All event listeners initialized!');
 });
