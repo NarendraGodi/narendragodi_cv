@@ -1,50 +1,59 @@
-# CV Website - Project Structure
+# CV Website - Modern DevOps Portfolio
 
-This repository contains my professional CV as an interactive website.
+This is a high-performance, interactive professional CV built with React and TanStack Start, optimized for deployment on Cloudflare Pages.
+
+## 🚀 Tech Stack
+
+- **Framework**: [TanStack Start](https://tanstack.com/router/latest/docs/framework/react/start/overview) (React + TanStack Router)
+- **Styling**: [Tailwind CSS 4.0](https://tailwindcss.com/)
+- **Components**: [shadcn/ui](https://ui.shadcn.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Deployment**: [Cloudflare Pages](https://pages.cloudflare.com/) (with SSR support)
 
 ## 📁 Project Structure
 
 ```
-cv-website/
-├── index.html          # Main HTML structure
-├── css/
-│   └── style.css       # All styling
-├── js/
-│   └── script.js       # Interactive functionality
-└── README.md           # This file
+narendragodi_cv/
+├── src/
+│   ├── routes/          # File-based routing (Experience, About, Contact, etc.)
+│   ├── components/      # UI components and layout
+│   ├── data/            # Centralized content (Experiences, Certs, Profile)
+│   └── assets/          # Static images and badges
+├── vite.config.ts       # Build configuration
+└── wrangler.jsonc       # Cloudflare Pages/Workers configuration
 ```
 
-## 🚀 GitHub Pages Deployment
+## 🛠️ Local Development
 
-1. Create a new repository named `<your-username>.github.io`
-2. Upload all files maintaining the folder structure
-3. Go to Settings → Pages
-4. Select main branch as source
-5. Your site will be live at `https://<your-username>.github.io`
+1. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-## ✨ Features
+2. **Start development server**:
+   ```bash
+   npm run dev
+   ```
 
-- **Dark/Light Mode** - Toggle between themes
-- **Responsive Design** - Mobile, tablet, and desktop optimized
-- **Interactive Experience** - Click on companies to see detailed project information
-- **Smooth Animations** - Professional transitions and effects
-- **Print-Friendly** - Optimized for PDF generation
+## 🌐 Deployment (Cloudflare Pages)
 
-## 🛠️ Technologies Used
+This project is configured for Cloudflare Pages with Server-Side Rendering (SSR).
 
-- HTML5
-- CSS3 (with CSS Variables for theming)
-- Vanilla JavaScript (no dependencies)
+1. Connect this repository to **Cloudflare Pages**.
+2. **Build Command**: `npm run build`
+3. **Build Output Directory**: `.output/public`
+4. **Environment Variable**: Set `NODE_VERSION` to `20` or higher.
 
-## 📝 Customization
+## ✨ Key Features
 
-- **Colors**: Edit CSS variables in `style.css`
-- **Content**: Update `index.html`
-- **Interactions**: Modify `script.js`
+- **Dark/Light Mode** - Automatic system preference detection.
+- **SSR Enabled** - Optimized for SEO and initial page load speed.
+- **Responsive** - Tailored for mobile, tablet, and desktop viewing.
+- **Interactive Experience** - Modern transitions and interactive elements.
 
 ## 📄 License
 
-Personal use only. Please do not distribute without permission.
+Personal use only.
 
 ## 📧 Contact
 
